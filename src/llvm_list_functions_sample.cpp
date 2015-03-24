@@ -5,8 +5,8 @@
 #include <llvm/Support/MemoryBuffer.h>
 
 
-std::unique_ptr<llvm::MemoryBuffer>& get_memory_buffer_for_file(
-	std::string file_name)
+std::unique_ptr<llvm::MemoryBuffer>&
+get_memory_buffer_for_file(std::string file_name)
 {
 	llvm::ErrorOr<std::unique_ptr<llvm::MemoryBuffer>> memory_buffer =
 		llvm::MemoryBuffer::getFile(file_name);
