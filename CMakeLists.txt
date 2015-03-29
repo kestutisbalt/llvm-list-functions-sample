@@ -17,7 +17,7 @@ include_directories(${LLVM_INCLUDE_DIRS})
 add_definitions(${LLVM_DEFINITIONS})
 add_definitions("-std=c++11 -fno-rtti")
 
-llvm_map_components_to_libnames(llvm_libs support)
+llvm_map_components_to_libnames(llvm_libs support irreader)
 
 add_executable(${project_executable} ${src_files})
 target_link_libraries(${project_executable} ${llvm_libs})
