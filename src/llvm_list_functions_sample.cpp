@@ -9,7 +9,7 @@ get_memory_buffer_from_bitcode_file(const std::string& file_name)
 {
 	auto memory_buffer = llvm::MemoryBuffer::getFile(file_name);
 
-	if (memory_buffer)
+	if (memory_buffer.getError())
 	{
 		throw std::runtime_error("Failed to open bitcode file");
 	}
@@ -26,4 +26,6 @@ main(int argc, char *args[])
 
 	llvm::cl::ParseCommandLineOptions(argc, args,
 		"Lists functions from LLVM bitcode\n");
+
+	get_memory_buffer_from_bitcode_file(file_name);
 }
