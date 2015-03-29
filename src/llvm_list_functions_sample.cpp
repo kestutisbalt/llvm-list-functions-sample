@@ -67,4 +67,19 @@ main(int argc, char *args[])
 	llvm::cl::ParseCommandLineOptions(argc, args,
 		"Lists functions from LLVM bitcode\n");
 
+	try
+	{
+		auto memory_buffer =
+			get_memory_buffer_from_bitcode_file(file_name);
+		auto functions = list_functions(memory_buffer.get());
+
+		for (auto function: functions)
+		{
+			std::cout <<function <<"\n";
+		}
+	}
+	catch(const std::runtime_error& error)
+	{
+		std::cerr <<error.what();
+	}
 }
