@@ -1,9 +1,21 @@
 #include <string>
-#include <vector>
-#include <iostream>
 
 #include <llvm/Support/CommandLine.h>
 #include <llvm/Support/MemoryBuffer.h>
+
+
+std::unique_ptr<llvm::MemoryBuffer>
+get_memory_buffer_from_bitcode_file(const std::string& file_name)
+{
+	auto memory_buffer = llvm::MemoryBuffer::getFile(file_name);
+
+	if (memory_buffer)
+	{
+		throw std::runtime_error("Failed to open bitcode file");
+	}
+
+	return std::move(memory_buffer.get());
+}
 
 
 int
