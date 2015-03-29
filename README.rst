@@ -27,7 +27,7 @@ Linux
 Usage
 =====
 
-#. Create test file: **test.cpp**:
+1. Create test file: **test.cpp**:
 
 .. code-block:: C++
 
@@ -40,14 +40,14 @@ Usage
 	}
 
 
-#. Generate llvm bitcode:
+2. Generate llvm bitcode:
 
-.. code-bock:: bash
+.. code-block:: bash
 
 	clang++-3.5 -c -emit-llvm test.cpp -o test.bc
 
 
-#. Run sample:
+3. Run sample:
 
 .. code-block:: bash
 
