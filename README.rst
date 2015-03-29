@@ -8,7 +8,7 @@ This is a sample of extracting function names from llvm bitcode.
 Dependencies
 ============
 
-* llvm 3.5
+* clang 3.5
 * cmake
 
 
@@ -27,7 +27,7 @@ Linux
 Usage
 =====
 
-test.cpp
+#. Create test file: **test.cpp**:
 
 .. code-block:: C++
 
@@ -38,3 +38,15 @@ test.cpp
 	void test_function1()
 	{
 	}
+
+#. Generate llvm bitcode:
+
+.. code-bock:: bash
+
+	clang++-3.5 -c -emit-llvm test.cpp -o test.bc
+
+#. Run sample:
+
+.. code-block:: bash
+
+	./llvm-list-functions-sample test.bc
