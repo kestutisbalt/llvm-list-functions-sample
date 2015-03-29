@@ -42,6 +42,22 @@ parse_functions_from_module(const llvm::Module *module)
 }
 
 
+std::vector<std::string>
+list_functions(const llvm::MemoryBuffer *memory_buffer)
+{
+	llvm::LLVMContext context;
+
+	auto module = llvm::parseBitcodeFile(memory_buffer->getMemBufferRef(),
+		context);
+
+	if (module.getError()) {
+		throw std::runtime_error("Failed to parse LLVM bitcode");
+	}
+
+	return parse_functions_from_module(module.get());
+}
+
+
 int
 main(int argc, char *args[])
 {
@@ -50,4 +66,5 @@ main(int argc, char *args[])
 
 	llvm::cl::ParseCommandLineOptions(argc, args,
 		"Lists functions from LLVM bitcode\n");
+
 }
