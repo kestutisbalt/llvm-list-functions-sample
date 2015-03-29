@@ -39,11 +39,13 @@ Usage
 	{
 	}
 
+
 #. Generate llvm bitcode:
 
 .. code-bock:: bash
 
 	clang++-3.5 -c -emit-llvm test.cpp -o test.bc
+
 
 #. Run sample:
 
